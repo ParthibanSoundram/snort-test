@@ -1,0 +1,8 @@
+alert tcp $HOME_NET any -> $EXTERNAL_NET $HTTP_PORTS (msg:"HTTP Request to domain - http://117.222.161.58:43108/i"; flow:established,to_server; content:"Host|3a 20|http://117.222.161.58:43108/i|0d 0a|"; http_header; fast_pattern:6,20; classtype:trojan-activity; sid:12345; rev:1;)
+alert tcp $HOME_NET any -> $EXTERNAL_NET $HTTP_PORTS (msg:"HTTP Request to domain - https://www.google.com"; flow:established,to_server; content:"Host|3a 20|https://www.google.com|0d 0a|"; http_header; fast_pattern:6,20; classtype:trojan-activity; sid:101; rev:1;)
+alert tcp $HOME_NET any -> $EXTERNAL_NET $HTTP_PORTS (msg:"HTTP Request to domain - https://dimabusiness.com/"; flow:established,to_server; content:"Host|3a 20|https://dimabusiness.com/|0d 0a|"; http_header; fast_pattern:6,20; classtype:trojan-activity; sid:102; rev:1;)
+alert tcp $HOME_NET any -> $EXTERNAL_NET $HTTP_PORTS (msg:"HTTP Request to domain - 117.222.161.58"; flow:established,to_server; content:"Host|3a 20|117.222.161.58|0d 0a|"; http_header; fast_pattern:6,14; classtype:trojan-activity; sid:103; rev:1;)
+alert tcp $HOME_NET any -> $EXTERNAL_NET $HTTP_PORTS (msg:"HTTP Request to domain - google.com"; flow:established,to_server; content:"Host|3a 20|google.com|0d 0a|"; http_header; fast_pattern:only; classtype:trojan-activity; sid:12346; rev:1;)
+alert tcp $HOME_NET any -> $EXTERNAL_NET $HTTP_PORTS (msg:"HTTP Request to domain - dimabusiness.com"; flow:established,to_server; content:"Host|3a 20|dimabusiness.com|0d 0a|"; http_header; fast_pattern:6,16; classtype:trojan-activity; sid:12347; rev:1;)
+
+

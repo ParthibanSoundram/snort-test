@@ -1,0 +1,23 @@
+https://urlhaus.abuse.ch/downloads/ids/  (Rules)
+
+wget -O urlhause.rules https://urlhaus.abuse.ch/downloads/ids/
+
+
+cp -avr src/dynamic-preprocessors/build/usr/local/lib/snort_dynamicpreprocessor/* /usr/local/lib/snort_dynamicpreprocessor/
+
+
+sed -i "s/include \$RULE\_PATH/#include \$RULE\_PATH/" /etc/snort/snort.conf
+
+sed -i 's/include \$RULE\_PATH/#include \$RULE\_PATH/' /etc/snort/snort.conf
+
+
+sudo snort -A console -i eno1 -u snort -g snort -c /etc/snort/snort.conf
+
+
+systemctl restart snort
+systemctl status snort
+
+
+wget -O etn_aggressive.rules https://security.etnetera.cz/feeds/etn_aggressive.rules
+
+wget -O feodotracker.rules https://feodotracker.abuse.ch/downloads/feodotracker.rules
